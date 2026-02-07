@@ -1,0 +1,18 @@
+﻿@page
+@model HospitalManagementSystem.Pages.Account.LoginModel
+
+<h2>Login</h2>
+
+<form method="post" class="card p-4 shadow-sm bg-white" style="max-width:400px;">
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Password</label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary w-100">Login</button>
+</form>

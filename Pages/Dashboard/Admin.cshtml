@@ -1,0 +1,27 @@
+﻿@page
+@model HospitalManagementSystem.Pages.Dashboard.AdminModel
+
+<h2>Admin Dashboard</h2>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card p-3 shadow">
+            <h4>Doctors</h4>
+            <h2>@Model.DoctorsCount</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 shadow">
+            <h4>Patients</h4>
+            <h2>@Model.PatientsCount</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 shadow">
+            <h4>Appointments</h4>
+            <h2>@Model.AppointmentsCount</h2>
+        </div>
+    </div>
+</div>

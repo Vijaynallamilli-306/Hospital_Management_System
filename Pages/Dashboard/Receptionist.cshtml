@@ -1,0 +1,13 @@
+﻿@page
+@model HospitalManagementSystem.Pages.Dashboard.ReceptionistModel
+
+<h2>Receptionist Dashboard</h2>
+
+<div class="card p-4 shadow mt-4">
+    <h4>Today's Appointments</h4>
+    <h2>@Model.TodayAppointments</h2>
+
+    <a asp-page="/Appointments/Index" class="btn btn-success mt-3">
+        Manage Appointments
+    </a>
+</div>

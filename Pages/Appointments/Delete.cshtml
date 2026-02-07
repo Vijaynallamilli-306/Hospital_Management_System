@@ -1,0 +1,21 @@
+﻿@page "{id:int}"
+@model HospitalManagementSystem.Pages.Appointments.DeleteModel
+
+<h2 class="text-danger">Cancel Appointment</h2>
+
+<div class="alert alert-warning">
+    Are you sure you want to cancel this appointment?
+</div>
+
+<div class="card p-3 shadow-sm bg-white">
+    <p><strong>Date:</strong> @Model.Appointment.AppointmentDate.ToString("dd MMM yyyy HH:mm")</p>
+    <p><strong>Doctor:</strong> @Model.Appointment.Doctor.Name</p>
+    <p><strong>Patient:</strong> @Model.Appointment.Patient.Name</p>
+
+    <form method="post">
+        <input type="hidden" asp-for="Appointment.Id" />
+
+        <button type="submit" class="btn btn-danger">Yes, Cancel</button>
+        <a asp-page="Index" class="btn btn-secondary">No</a>
+    </form>
+</div>

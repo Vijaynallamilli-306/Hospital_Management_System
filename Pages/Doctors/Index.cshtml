@@ -1,0 +1,33 @@
+﻿@page
+@model HospitalManagementSystem.Pages.Doctors.IndexModel
+
+<h2 class="mb-3">Doctors</h2>
+
+<a asp-page="Create" class="btn btn-success mb-3">➕ Add Doctor</a>
+
+<table class="table table-bordered table-hover bg-white">
+    <thead class="table-primary">
+        <tr>
+            <th>Name</th>
+            <th>Specialization</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model.Doctors)
+        {
+            <tr>
+                <td>@d.Name</td>
+                <td>@d.Specialization</td>
+                <td>@d.Phone</td>
+                <td>@d.Email</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@d.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-page="Delete" asp-route-id="@d.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

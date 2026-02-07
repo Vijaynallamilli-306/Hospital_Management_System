@@ -1,0 +1,66 @@
+﻿@page
+@model HospitalManagementSystem.Pages.Appointments.IndexModel
+
+<h2 class="mb-3">Appointments</h2>
+
+@if (User.IsInRole("Admin") || User.IsInRole("Receptionist"))
+{
+    <a asp-page="Create" class="btn btn-success mb-3">
+        📅 Book Appointment
+    </a>
+}
+
+<table class="table table-bordered table-hover bg-white">
+    <thead class="table-primary">
+        <tr>
+            <th>Date</th>
+            <th>Doctor</th>
+            <th>Patient</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var a in Model.Appointments)
+        {
+            <tr>
+                <td>@a.AppointmentDate.ToString("dd MMM yyyy HH:mm")</td>
+                <td>@a.Doctor.Name</td>
+                <td>@a.Patient.Name</td>
+
+                <!-- STATUS -->
+                <td>
+                    <span class="badge
+                        @(a.Status == "Booked" ? "bg-primary" :
+                                                a.Status == "Completed" ? "bg-success" :
+                                                "bg-danger")">
+                    @a.Status
+                </span>
+            </td>
+
+                <!-- ACTIONS -->
+                <td>
+                @if (User.IsInRole("Admin") || User.IsInRole("Receptionist"))
+                    {
+                        <a asp-page="Edit"
+                           asp-route-id="@a.Id"
+                           class="btn btn-sm btn-warning me-1">
+                            Edit
+                        </a>
+
+                        <a asp-page="Delete"
+                           asp-route-id="@a.Id"
+                           class="btn btn-sm btn-danger">
+                            Cancel
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">View only</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

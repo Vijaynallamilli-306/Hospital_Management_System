@@ -1,0 +1,13 @@
+﻿@page
+@model HospitalManagementSystem.Pages.Dashboard.DoctorModel
+
+<h2>Doctor Dashboard</h2>
+
+<div class="card p-4 shadow mt-4">
+    <h4>Your Appointments</h4>
+    <h2>@Model.MyAppointments</h2>
+
+    <a asp-page="/Appointments/Index" class="btn btn-primary mt-3">
+        View Appointments
+    </a>
+</div>

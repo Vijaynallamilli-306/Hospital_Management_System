@@ -1,0 +1,22 @@
+﻿@page "{id:int}"
+@model HospitalManagementSystem.Pages.Patients.DeleteModel
+
+<h2 class="text-danger">Delete Patient</h2>
+
+<div class="alert alert-warning">
+    Are you sure you want to delete
+    <strong>@Model.Patient.Name</strong>?
+</div>
+
+<div class="card p-3 bg-white shadow-sm">
+    <p><strong>Age:</strong> @Model.Patient.Age</p>
+    <p><strong>Gender:</strong> @Model.Patient.Gender</p>
+    <p><strong>Phone:</strong> @Model.Patient.Phone</p>
+
+    <form method="post">
+        <input type="hidden" asp-for="Patient.Id" />
+
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

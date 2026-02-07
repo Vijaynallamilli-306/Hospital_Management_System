@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Hospital Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-page="/Index">🏥 HMS</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    @if (User.Identity!.IsAuthenticated)
+                    {
+                        <!-- ADMIN ONLY -->
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Doctors/Index">Doctors</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Account/Register">Register</a>
+                            </li>
+                        }
+
+                        <!-- ADMIN + RECEPTIONIST -->
+                        @if (User.IsInRole("Admin") || User.IsInRole("Receptionist"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Patients/Index">Patients</a>
+                            </li>
+                        }
+
+                        <!-- ALL LOGGED-IN USERS -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Appointments/Index">Appointments</a>
+                        </li>
+
+                        @* <li class="nav-item">
+                            <a class="nav-link" asp-page="/Pages/Dashboard">Appointments</a>
+                        </li> *@
+
+                        <!-- LOGOUT -->
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" asp-page="/Account/Logout">
+                                Logout
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <!-- LOGIN -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Account/Login">Login</a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    @RenderSection("Scripts", required: false)
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
